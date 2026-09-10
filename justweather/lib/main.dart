@@ -82,8 +82,10 @@ class _ToDoListState extends State<ToDoList> {
 }
 
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     title: 'To Do List',
-    home: ToDoList(),
+    home: const ToDoList(),
+    theme: ThemeData.dark(useMaterial3: true),
+    debugShowCheckedModeBanner: false,
   ));
 }
