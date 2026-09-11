@@ -42,7 +42,21 @@ class _ToDoListState extends State<ToDoList> {
         child: ListView(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           children: locations.map((location) {
-            return WeatherRecord(location: location);
+            return Dismissible(
+              key: Key(location.name),
+              direction: DismissDirection.endToStart,
+              onDismissed: (direction) {
+                setState(() {
+                  locations.remove(location);
+                });
+              },
+              background: Container(
+                color: Colors.red,
+                 alignment: Alignment.centerRight,
+                  padding: const EdgeInsets.only(right: 20.0),
+                  child: const Icon(Icons.delete, color: Colors.white, size: 40.0)),
+              child: WeatherRecord(location: location)
+            );
           }).toList(),
         ),
       ),
