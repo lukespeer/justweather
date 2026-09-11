@@ -15,6 +15,7 @@ Pull Requests and Issues are welcome. I don't know why there would be any, since
 ![Add Screen (Before Search)](assets/image1.png)
 ![Add Screen (Searched)](assets/image2.png)
 ![Main Screen (After Add)](assets/image3.png)
+![Delete Location](assets/image4.png)
 
 ## Credits
 
