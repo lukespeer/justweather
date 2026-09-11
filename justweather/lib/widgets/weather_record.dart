@@ -34,7 +34,7 @@ class _WeatherRecordState extends State<WeatherRecord> {
             final data = snapshot.data!;
             return ListTile(
               title: Text(widget.location.name),
-              subtitle: Text('State: ${data.region}, H: ${data.high}, L: ${data.low}'),
+              subtitle: Text('Region: ${data.region}, Temp: ${data.temperature}°, High: ${data.high}°, Low: ${data.low}°'),
             );
           } else {
             return const Text('No data available');
