@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:justweather/api/location_api.dart';
 
-import 'package:flutter/material.dart';
-import 'package:justweather/api/location_api.dart';
 
 class CitySearchDialog extends StatefulWidget {
   final Function(City) onCityAdded;
@@ -46,14 +44,14 @@ class _CitySearchDialogState extends State<CitySearchDialog> {
                     );
                   }
 
-                  List<City> cities = snapshot.data ?? [];
-
-                  if (cities.isEmpty) {
+                  if (!snapshot.hasData || snapshot.data!.isEmpty) {
                     return const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text('No cities found.'),
                     );
                   }
+
+                  List<City> cities = snapshot.data!.where((city) => city.country == "United States").toList();
 
                   return ListView.builder(
                     shrinkWrap: true,
@@ -61,11 +59,12 @@ class _CitySearchDialogState extends State<CitySearchDialog> {
                     itemBuilder: (context, index) {
                       return ListTile(
                         title: Text(cities[index].name),
+                        trailing: Text(cities[index].state ?? 'State Unknown'),
                         onTap: () {
                           widget.onCityAdded(cities[index]);
                           Navigator.pop(context);
                         },
-                      );
+                      );                     
                     },
                   );
                 },

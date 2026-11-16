@@ -21,6 +21,7 @@ class _WeatherRecordState extends State<WeatherRecord> {
     weatherData = getWeather(latitude: widget.location.latitude, longitude: widget.location.longitude);
   }
 
+  @override
   Widget build(BuildContext context) {
     return Card(
       child: FutureBuilder<WeatherData>(
@@ -34,6 +35,7 @@ class _WeatherRecordState extends State<WeatherRecord> {
             final data = snapshot.data!;
             return ListTile(
               title: Text(widget.location.name),
+              //subtitle: Text('Region: ${data.region}, Hourly: ${data.hourly}'),
               subtitle: Text('Region: ${data.region}, Temp: ${data.temperature}°, High: ${data.high}°, Low: ${data.low}°'),
             );
           } else {
